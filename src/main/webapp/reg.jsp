@@ -72,7 +72,7 @@
                   <div class="col-md-5">
                      <div class="book_room">
                         <h1>Registration Form USER INFO</h1>
-                        <form class="book_now" action="complition.jsp">
+                        <form class="book_now" action="save.jsp">
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Username</span>
@@ -90,9 +90,26 @@
                                  <span>Gender</span>
                                  <input type="Radio" name="Gender" value="Male"> Male <input type="Radio" name="Gender" value="Female"> Female
                               </div>
+                               <div class="row">
+                              <div class="col-md-12">
+                                 <span>Phone Number</span>
+                                 <input class="online_book" placeholder="1234567890" type="text" name="Number">
+                              </div>
+                              <div class="col-md-12">
+                                 <span>Email</span>                                 
+                                 <input class="online_book" type="Email" name="Email">                                 
+                              </div>
+                              <div class="col-md-12">
+                                 <span>Password</span>
+                                 <input class="online_book" type="Password" name="Password">
+                              </div>
+                              <div class="col-md-12">
+                                 <span>Confirm Password</span>
+                                 <input class="online_book" type="Password" name="cPassword">
+                              </div>
                      
                               <div class="col-md-12">
-                                 <input type="Submit" class="book_btn" formaction="reg2.jsp" >
+                                 <button class="book_btn" formaction="save.jsp"  type="submit">Submit</button>
                            
                               </div>
                         </form>

@@ -92,8 +92,7 @@
                                  <input class="online_book" type="Password" name="cPassword">
                               </div>
    
-                              <div class="col-md-12"><button type="Submit" class="book_btn" formaction="complition.jsp"  >Next</button>
-                              </div>
+                              <div class="col-md-12"><button class="book_btn" formaction="complition.jsp"  type="submit">Submit</button>
                       
                      </div>
                   </div>

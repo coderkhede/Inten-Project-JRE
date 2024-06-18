@@ -72,10 +72,10 @@
                            Name<input class="contactus" type=text placeholder="<%eut.print((Name));%>"  name="Name"> 
                         </div>
                         <div class="col-md-12">
-                           Date Of Birth<input class="contactus" placeholder="<%eut.print((DOB));%>" type=text name="DOB">                          
+                           Date Of Birth<input class="contactus" placeholder="<%eut.print(("DOB"));%>" type=text name="DOB">                          
                         </div>
                         <div class="col-md-12">
-                          Gender <input class="contactus" placeholder="<% eut.print((Gender));%>" type=text name="Gender">
+                          Gender <input class="contactus" placeholder="<% eut.print(("Gender"));%>" type=text name="Gender">
                         </div>
                         <div class="col-md-12">
                            <button class="send_btn">Send</button>

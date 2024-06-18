@@ -1,14 +1,14 @@
 package com.dbo;
 
 public class User {
-	String Username;
-	String Name;
-	String DOB;
-	String Gender;
-	String Email;
-	String Number;
-	String Password;
-	String CPassword;
+	private String Username;
+	private String Name;
+	private String DOB;
+	private String Gender;
+	private String Email;
+	private String Number;
+	private String Password;
+	private String CPassword;
 	
 	public String getUsername() {
 		return Username;

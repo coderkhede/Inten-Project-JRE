@@ -39,25 +39,26 @@
 <!-- End Header -->
 <%
 	User u=new User();
-	String Username=request.getParameter("Username");
-	String Name=request.getParameter("Name");
-	String DOB=request.getParameter("DOB");
-	String Gender=request.getParameter("Gender");
-	String Email=request.getParameter("Email");
-	String Number=request.getParameter("Number");
-	String Password=(request.getParameter("Password"));
-	String CPassword=(request.getParameter("CPassword"));
+u.setUsername(request.getParameter("Username"));
+u.setName(request.getParameter("Name"));
+u.setDOB(request.getParameter("DOB"));
+u.setGender(request.getParameter("Gender"));
+u.setEmail(request.getParameter("Email"));
+u.setNumber(request.getParameter("Number"));
+u.setPassword(request.getParameter("Password"));
+u.setCPassword(request.getParameter("CPassword"));
 	
-	u.setUsername(Username);
-	u.setName(Name);
-	u.setDOB(DOB);
-	u.setGender(Gender);
-	u.setEmail(Email);
-	u.setNumber(Number);
-	u.setPassword(Password);
-	u.setCPassword(CPassword);
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	DBService db=new DBService();
+	try{
 	int x=db.Add(u);
 	if(x==1){
 		%>
@@ -65,7 +66,12 @@
 		<br>
 		<br>
 		<font color=green size=8px>Registration Succsesfull</font>
-		</center> <%} %>
+		</center>
+		 <%}}
+	catch(Exception e){
+		
+	
+		} %>
 
 <!-- Footer -->
 <%@include file="Footer.jsp" %>
