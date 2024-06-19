@@ -75,19 +75,19 @@
                         <form class="book_now" action="RegistrationServlet" method="post">
                            <div class="row">
                               <div class="col-md-12">
-                                 <span>Username</span>
-                                 <input class="online_book" placeholder="Your Username" type="text" name="Username">
+                                 <span>Name</span>
+                                 <input class="online_book" placeholder="Your Username" type="text" name="empName">
                               </div>
                               <div class="col-md-12">
-                                 <span>Full Name</span>                                 
-                                 <input class="online_book" type="text" name="Name">                                 
+                                 <span>Email</span>                                 
+                                 <input class="online_book" type="text" name="empEmail">                                 
                               </div>
                               <div class="col-md-12">
-                                 <span>Date of Birth</span>
-                                 <input class="online_book" type="date" name="DOB">
+                                 <span>job</span>
+                                 <input class="online_book" type="date" name="job">
                               </div>
                               <div class="col-md-12">
-                                 <span>Gender</span>
+                                 <span></span>
                                  <input type="Radio" name="Gender" value="Male"> Male <input type="Radio" name="Gender" value="Female"> Female
                               </div>
                                <div class="row">
@@ -112,6 +112,7 @@
                                  <button class="book_btn" type="submit">Submit</button>
                            
                               </div>
+                              You are not a Visiter<a href="reg2.jsp"><font color=red>Sign Up as Employeee</font></a>
                         </form>
                      </div>
                   </div>

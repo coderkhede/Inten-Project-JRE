@@ -27,7 +27,7 @@ public class DBService {
 	}
 	
 	public int Add(User u) throws Exception {
-		
+	
 		
 		
 		PreparedStatement pr=con.prepareStatement("insert into userinfos values(?,?,?,?,?,?,?)");
@@ -41,66 +41,64 @@ public class DBService {
 		int x=pr.executeUpdate();
 		
 		return x;
-		
 		}
-	public boolean check(LoginInfo u)throws Exception {
-		boolean isValid = false;
-		String Roll=u.getRoll();
-			if(Roll=="user") {
+	
+	public boolean check(User u)throws Exception {
+		boolean isValid=false;
+		
+		
+			
+		if(u.getRoll().equals("user")==true)
+		{
 			PreparedStatement ps = con.prepareStatement("select * from userinfos where username = ? and password = ?");
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getPassword());
 			ResultSet rs = ps.executeQuery();
-			
 			if(rs.next()==true)
 			{
 				isValid = true;
 			}
 			else
 			{
-				isValid = false;
+				isValid= false;
 			}
-		
-		
-		}else if(Roll=="employee") {
-			PreparedStatement ps = con.prepareStatement("select * from employeeinfos where username = ? and password = ?");
-			ps.setString(1, u.getUsername());
-			ps.setString(2, u.getPassword());
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()==true)
-			{
-				isValid = true;
-			}
-			else
-			{
-				isValid = false;
-			}
-		
-		
-		}else if(Roll=="administrator") {
-			PreparedStatement ps = con.prepareStatement("select * from Admininfos where username = ? and password = ?");
-			ps.setString(1, u.getUsername());
-			ps.setString(2, u.getPassword());
-			ResultSet rs = ps.executeQuery();
-			
-			if(rs.next()==true)
-			{
-				isValid = true;
-			}
-			else
-			{
-				isValid = false;
-			}
-		
-		
 		}
-			return isValid;
+		else if(u.getRoll().equals("employee")==true)
+		{
+			PreparedStatement ps = con.prepareStatement("select * from empinfos where username = ? and password = ?");
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()==true)
+			{
+				isValid = true;
+			}
+			else
+			{
+				isValid= false;
+			}
+		}else {
+			PreparedStatement ps = con.prepareStatement("select * from Admininfos where ID = ? and password = ?");
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()==true)
+			{
+				isValid = true;
+			}
+			else
+			{
+				isValid= false;
+			}
 			
-	}
+		}
+				
+			
+			
+			return isValid;
 		
+	}
 	}
 
-	
 
 

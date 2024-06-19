@@ -9,7 +9,13 @@ public class User {
 	private String Number;
 	private String Password;
 	private String CPassword;
-	
+	private String Roll;
+	public String getRoll() {
+		return Roll;
+	}
+	public void setRoll(String roll) {
+		Roll = roll;
+	}
 	public String getUsername() {
 		return Username;
 	}

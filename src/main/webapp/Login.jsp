@@ -72,7 +72,7 @@
                   <div class="col-md-5">
                      <div class="book_room">
                         <h1>Log In</h1>
-                        <form class="book_now" action="LoginServelate.java">
+                        <form class="book_now" action="login" method=post>
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Username</span>
@@ -87,13 +87,13 @@
                               <div class="col-md-12">
                               <span>Roll</span>
                                  <select  name="bar">
-    <option value="user">Visiter</option>
-    <option value="employee">Employee</option>
-    <option value="administrator">Administrator</option>
-    </select><br><br>
+   										 <option value="user">Visiter</option>
+    										<option value="employee">Employee</option>
+   											 <option value="administrator">Administrator</option>
+    								</select><br><br>
                               </div>
                               <div class="col-md-12">
-                                <button class="book_btn">Login</button></a>
+                                <button class="book_btn">Login</button>
                                  
                               </div>
                               
