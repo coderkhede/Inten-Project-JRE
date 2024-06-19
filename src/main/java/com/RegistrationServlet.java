@@ -1,6 +1,8 @@
 package com;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,16 +34,22 @@ public class RegistrationServlet extends HttpServlet {
 		u.setCPassword(request.getParameter("CPassword"));
 		DBService db = new DBService();
 		int x=0;
+		String target="";
 		try {
 			x = db.Add(u);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			
 		}
 		if(x>=1)
 		{
 			System.out.println("Valid User");
+			target="/Succsesfull.jsp";
 		}
+		RequestDispatcher rd = getServletContext().getRequestDispatcher(target);
+		rd.forward(request, response);
 	}
 
 }

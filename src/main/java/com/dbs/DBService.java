@@ -3,8 +3,10 @@ package com.dbs;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.dbo.User;
+import com.dto.LoginInfo;
 
 public class DBService {
 	Connection con=null;
@@ -41,6 +43,61 @@ public class DBService {
 		return x;
 		
 		}
+	public boolean check(LoginInfo u)throws Exception {
+		boolean isValid = false;
+		String Roll=u.getRoll();
+			if(Roll=="user") {
+			PreparedStatement ps = con.prepareStatement("select * from userinfos where username = ? and password = ?");
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()==true)
+			{
+				isValid = true;
+			}
+			else
+			{
+				isValid = false;
+			}
+		
+		
+		}else if(Roll=="employee") {
+			PreparedStatement ps = con.prepareStatement("select * from employeeinfos where username = ? and password = ?");
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()==true)
+			{
+				isValid = true;
+			}
+			else
+			{
+				isValid = false;
+			}
+		
+		
+		}else if(Roll=="administrator") {
+			PreparedStatement ps = con.prepareStatement("select * from Admininfos where username = ? and password = ?");
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()==true)
+			{
+				isValid = true;
+			}
+			else
+			{
+				isValid = false;
+			}
+		
+		
+		}
+			return isValid;
+			
+	}
 		
 	}
 
