@@ -1,4 +1,4 @@
-package com;
+package com.dbs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,7 +28,7 @@ public class DBService {
 		
 		
 		
-		PreparedStatement pr=con.prepareStatement("insert into User values('?','?','?','?','?','?','?');");
+		PreparedStatement pr=con.prepareStatement("insert into userinfos values(?,?,?,?,?,?,?)");
 		pr.setString(1,u.getUsername());
 		pr.setString(2,u.getName());
 		pr.setString(3,u.getDOB());

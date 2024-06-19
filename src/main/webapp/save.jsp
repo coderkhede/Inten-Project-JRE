@@ -1,4 +1,4 @@
-<%@page import="com.DBService"%>
+<%@page import="com.dbs.DBService"%>
 <%@page import="com.dbo.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

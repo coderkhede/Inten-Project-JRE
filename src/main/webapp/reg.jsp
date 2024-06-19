@@ -72,7 +72,7 @@
                   <div class="col-md-5">
                      <div class="book_room">
                         <h1>Registration Form USER INFO</h1>
-                        <form class="book_now" action="save.jsp">
+                        <form class="book_now" action="RegistrationServlet" method="post">
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Username</span>
@@ -109,7 +109,7 @@
                               </div>
                      
                               <div class="col-md-12">
-                                 <button class="book_btn" formaction="save.jsp"  type="submit">Submit</button>
+                                 <button class="book_btn" type="submit">Submit</button>
                            
                               </div>
                         </form>
