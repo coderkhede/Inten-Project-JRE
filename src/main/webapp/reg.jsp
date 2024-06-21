@@ -90,7 +90,7 @@
                                  <span></span>
                                  <input type="Radio" name="Gender" value="Male"> Male <input type="Radio" name="Gender" value="Female"> Female
                               </div>
-                               <div class="row">
+                               
                               <div class="col-md-12">
                                  <span>Phone Number</span>
                                  <input class="online_book" placeholder="1234567890" type="text" name="Number">
@@ -113,12 +113,14 @@
                            
                               </div>
                               You are not a Visiter<a href="reg2.jsp"><font color=red>Sign Up as Employeee</font></a>
+                            </div>
                         </form>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
+       
       </section>
       <!-- end banner -->
 <!-- End Reg Form -->

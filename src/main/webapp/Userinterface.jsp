@@ -1,3 +1,4 @@
+<%@page import="com.dbo.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -79,7 +80,9 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="contact.html">Contact Us</a>
                               </li>
-                             
+                              <li class="nav-item">
+                                 <font class="nav-link"color=Black size=5> User</font>font
+                              </li>
                            </ul>
                         </div>
                      </nav>

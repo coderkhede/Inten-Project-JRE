@@ -48,16 +48,16 @@ public class LoginServelate extends HttpServlet {
 		{
 			if(l.getRoll().equals("user")==true)
 			{
-				System.out.println("11111111111");
+				
 				target="/Userinterface.jsp";
 			}
 			else if(l.getRoll().equals("employee")==true)
 			{
-				System.out.println("22222222222");
+				
 				target="/Employeeinface.jsp";
 			}else {
 				
-				System.out.println("3333333333");
+				
 				target="/Admininterface.jsp";
 			}
 		}

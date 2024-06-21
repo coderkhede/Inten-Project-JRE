@@ -65,7 +65,7 @@ public class DBService {
 		}
 		else if(u.getRoll().equals("employee")==true)
 		{
-			PreparedStatement ps = con.prepareStatement("select * from empinfos where username = ? and password = ?");
+			PreparedStatement ps = con.prepareStatement("select * from empinfos where employeeID = ? and password = ?");
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getPassword());
 			ResultSet rs = ps.executeQuery();
