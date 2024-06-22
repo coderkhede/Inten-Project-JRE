@@ -1,12 +1,20 @@
 package com.dbs;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
+import org.apache.catalina.connector.Response;
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
+import com.dbo.LoginInfo;
 import com.dbo.User;
-import com.dto.LoginInfo;
 
 public class DBService {
 	Connection con=null;
@@ -97,6 +105,14 @@ public class DBService {
 			
 			return isValid;
 		
+	}
+	public  ArrayList<?> checkyn() throws Exception{
+		
+		
+		PreparedStatement pr=con.prepareStatement("select from roominfo where cheking='y'");
+		ResultSet rs=pr.executeQuery();
+		ArrayList b=(ArrayList) rs;
+		return b;
 	}
 	}
 

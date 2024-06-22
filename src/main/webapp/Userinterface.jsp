@@ -129,20 +129,20 @@
                   <div class="col-md-5">
                      <div class="book_room">
                         <h1>Book a Room Online</h1>
-                        <form class="book_now" action="Roomcheck">
+                        <form class="book_now" action="Room.jsp">
                            <div class="row">
                               <div class="col-md-12">
                                  <span>Arrival</span>
                                  <img class="date_cua" src="images/date.png">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
+                                 <input class="online_book" placeholder="dd/mm/yyyy" type="text" name="bookfrom">
                               </div>
                               <div class="col-md-12">
                                  <span>Departure</span>
                                  <img class="date_cua" src="images/date.png">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="dd/mm/yyyy">
+                                 <input class="online_book" placeholder="dd/mm/yyyy" type="text" name="bookto">
                               </div>
                               <div class="col-md-12">
-                                 <button class="book_btn">Book Now</button>
+                                 <button class="book_btn" formaction="Room.jsp">Book Now</button>
                               </div>
                            </div>
                         </form>

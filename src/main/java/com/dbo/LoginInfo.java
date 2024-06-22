@@ -1,4 +1,4 @@
-package com.dto;
+package com.dbo;
 
 public class LoginInfo {
 

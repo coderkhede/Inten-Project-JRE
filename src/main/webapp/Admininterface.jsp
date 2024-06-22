@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>keto</title>
+      <title>Adminpage</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -38,7 +38,23 @@
       <!-- end header -->
 <center>
 <br><br>
-<font color=Red size=8>Admin Interface</font>
+<font color=Black size=8>Welcome Admin</font><br>
+<img src="images\images.jpeg"><br>
+<h1>Admin Control From</h1><br>
+                       
+                          <div >
+                          <button class="book_btn" formaction="AddRoom">ADD Room</button>
+                          </div>
+                              <div >
+                          <button class="book_btn" formaction="JobRequest">Job Requests</button>
+                          </div>
+                              <div >
+                          <button class="book_btn" formaction="AddRoom">Manage Rooms</button>
+                          </div>
+                              <div>
+                          <button class="book_btn" formaction="Empmanagement">Employees Management</button>
+                          </div>
+                        
 </center>
       <!-- Footer -->
     <%@include file="Footer.jsp" %>

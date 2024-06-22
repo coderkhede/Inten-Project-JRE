@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dbo.LoginInfo;
 import com.dbo.User;
 import com.dbs.DBService;
-import com.dto.LoginInfo;
 
 
 @WebServlet("/login")
