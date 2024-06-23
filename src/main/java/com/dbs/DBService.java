@@ -7,15 +7,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.catalina.connector.Response;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
+import com.dbo.EmpInfo;
 import com.dbo.LoginInfo;
 import com.dbo.Roominfo;
 import com.dbo.User;
+
 
 public class DBService {
 	Connection con=null;
@@ -129,6 +132,49 @@ public class DBService {
 		}
 		return xx;
 	}
+	
+	public int EmpAdd(EmpInfo u) throws Exception {
+		int x=0;
+		PreparedStatement pr=con.prepareStatement("insert into empinfos(empid,empname,empdob,empgender,empphno,empemail,emppass,empjob,empsalary) values(?,?,?,?,?,?,?,?,?)");
+		pr.setInt(1,u.getEmpid());
+		pr.setString(2,u.getEmpname());
+		pr.setString(3,u.getEmpdob());
+		pr.setString(4,u.getEmpgender());
+		pr.setString(5,u.getEmpphno());
+		pr.setString(6,u.getEmpemail());
+		pr.setString(7,u.getEmppass());
+		pr.setString(8,u.getEmpjob());
+		pr.setInt(9,u.getEmpsalary());
+		x=pr.executeUpdate();
+		return x;
+	}
+	public ArrayList getAllRoom()
+	{
+		ArrayList<Roominfo>al = new ArrayList<Roominfo>();
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("select * from roominfo where cheking='y'");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()==true)
+			{
+				Roominfo s = new Roominfo();
+				s.setRoomno(rs.getInt("roomno"));
+				s.setRoomtype(rs.getString("roomtype"));
+				s.setRoomcap(rs.getInt("roomcapacity"));
+				s.setRoomcost(rs.getInt("roomCPP"));
+				s.setBuildingno(rs.getInt("BuldingNo"));
+				s.setRoomimagename(rs.getString("imagename"));
+				al.add(s);
+			}
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	
+	
 	}
 
 

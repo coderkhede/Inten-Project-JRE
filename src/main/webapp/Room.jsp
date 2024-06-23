@@ -1,3 +1,4 @@
+<%@page import="com.dbo.Roominfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.dbs.DBService"%>
@@ -44,100 +45,61 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="title">
-                     <h2>available rooms</h2>
+                     <h2>Available rooms</h2>
                   </div>
                </div>
             </div>
          </div>
       </div>
       <!-- our_room -->
-      <table>
+      <hr><br>
+      <br>
+      <center>
+      <h3>Note:- Remember the details of Selected room to fill the Booking Form</h3><br>
+      <table  width=85%>
+      <tr>		
+            	<th><font color=black size=3>Room.No</font></th>
+            	<th><font color=black size=3>Room Type</font></th>
+            	<th><font color=black size=3>Room Capacity</font></th>
+            	<th><font color=black size=3>Room Cost per Night</font></th>
+            	<th><font color=black size=3>Building No</font></th>
+            	<th><font color=black size=3>Image</font></th>
+            	<th><font color=black size=3>Booking.btn</font></th>
+            </tr>
+           
+            
+            <%
+            
+            ArrayList al =(ArrayList) request.getAttribute("allRooms");
+            //for(int i=0; i<al.size(); i++)
+            	int i=1;
+            	for(Object obj : al)
+            {
+            	Roominfo s = (Roominfo)obj;
+            	%>
+            	<tr>
+            	
+					<form action="Booking">
+            		
+            		<td><%=s.getRoomno()%></td>
+            		
+            		<td><%=s.getRoomtype()%></td>
+            		<td><%=s.getRoomcap()%></td>
+            		<td><%=s.getRoomcost()%></td>
+            		<td><%=s.getBuildingno()%></td>
+            		<td><%=s.getRoomimagename()%></td>
+					<td><button class="book_btn">Book</button></td>					          		
+					</form>            		
+            	
+            	</tr>
+            	<%
+            	i++;
+            }
+            %>
       
       </table>
-      <%
-      
-      String from = request.getParameter("bookfrom");
-      String to = request.getParameter("bookto");
-      
-      DBService db = new DBService();
-      ArrayList x=db.checkyn();
-     
-    	  %><div  class="our_room">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room1.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>
-                        Single Bad Room	
-                        </h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room2.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room3.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room4.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room5.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-6">
-                  <div id="serv_hover"  class="room">
-                     <div class="room_img">
-                        <figure><img src="images/room6.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div> 
- 
-      <!-- end our_room -->
+      </center>
+<hr>
 
       <!-- Footer -->
     <%@include file="Footer.jsp" %>

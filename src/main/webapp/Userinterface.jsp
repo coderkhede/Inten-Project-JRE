@@ -142,7 +142,7 @@
                                  <input class="online_book" placeholder="dd/mm/yyyy" type="text" name="bookto">
                               </div>
                               <div class="col-md-12">
-                                 <button class="book_btn" formaction="Room.jsp">Book Now</button>
+                                 <button class="book_btn" formaction="GetAvailableRoomServlet">Book Now</button>
                               </div>
                            </div>
                         </form>

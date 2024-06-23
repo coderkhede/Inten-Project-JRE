@@ -24,7 +24,7 @@ public class RoomServlet extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 		
 		Roominfo r=new Roominfo();
 		r.setRoomno(Integer.parseInt(request.getParameter("roomno")));
