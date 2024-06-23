@@ -14,6 +14,7 @@ import org.apache.catalina.connector.Response;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.dbo.LoginInfo;
+import com.dbo.Roominfo;
 import com.dbo.User;
 
 public class DBService {
@@ -106,13 +107,27 @@ public class DBService {
 			return isValid;
 		
 	}
-	public  ArrayList<?> checkyn() throws Exception{
+
+	public int addroom(Roominfo r,String y)
+	{
+		int xx=0;
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("insert into Roominfo(roomno,roomtype,roomcapacity,roomCPP,BuldingNo,imagename) values(?,?,?,?,?,?)");
+			ps.setInt(1,r.getRoomno() );
+			ps.setString(2,r.getRoomtype() );
+			ps.setInt(3,r.getRoomcap() );
+			ps.setInt(4,r.getRoomcost() );
+			ps.setInt(5,r.getBuildingno() );
+			ps.setString(1,y );
+			xx = ps.executeUpdate();
+			
+		}
+		catch (Exception e) 
+		{
 		
-		
-		PreparedStatement pr=con.prepareStatement("select from roominfo where cheking='y'");
-		ResultSet rs=pr.executeQuery();
-		ArrayList b=(ArrayList) rs;
-		return b;
+		}
+		return xx;
 	}
 	}
 

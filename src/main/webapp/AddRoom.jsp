@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>reg</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -31,63 +31,50 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
-<body>
-<!-- Header -->
-<%@include file="Header.jsp" %>
-<!-- End Header -->
+   <!-- body -->
+   <body class="main-layout">
+   <!-- header -->
+     <%@include file="Header.jsp" %>
+<!-- Body -->
 <hr>
-<br><br>
-<!-- Reg Form -->
-  <!-- banner -->
 <center>
          <div >
             <div >
                <div >
                   <div >
                      <div >
-                        <h1>Registration Form of User</h1><br><br>
-                        <form  action="RegistrationServlet" method="post">
-                           <div >
-                              <div class="col-md-12">
-                                 <span>Username</span>
-                                 <input placeholder="Your Username" type="text" name="Username">
+                        <form  action="RoomServlet" method="post">
+                        <h1>Add Rooms</h1><br>
+                         
+                              <div >
+                                 <span>Room No</span>
+                                 <input placeholder="101" type="Number" name="roomno">
                               </div><br>
                               <div >
-                                 <span>Full Name</span>                                 
-                                 <input  type="text" name="Name">                               
+                                 <span>Room Type</span>                                 
+                                 <input  placeholder="Single Room"type="text" name="roomtype">                               
                               </div><br>
                               <div >
-                                 <span>Date of Birth</span>
-                                 <input  type="date" name="DOB"><br>
+                                 <span>Room Capacity</span>
+                                 <input  type="number" name="roomcap"><br>
+                              </div><br> 
+                              <div >
+                                 <span>Room Cost Per Person</span>
+                                 <input placeholder="10000" type="number" name="roomcost">
                               </div><br>
                               <div >
-                                 <span></span>
-                                 <input type="Radio" name="Gender" value="Male"> Male  <input type="Radio" name="Gender" value="Female"> Female
-                              </div><br>
-                               
-                              <div >
-                                 <span>Phone Number</span>
-                                 <input placeholder="1234567890" type="text" name="Number">
+                                 <span>Room's Building No</span>                                 
+                                 <input  type="number" name="bulidingno">                                 
                               </div><br>
                               <div >
-                                 <span>Email</span>                                 
-                                 <input  type="Email" name="Email">                                 
+                                 <span>Room image</span>
+                                 <input  type="file" name="roomimage" accept="images/*">
                               </div><br>
-                              <div >
-                                 <span>Password</span>
-                                 <input  type="Password" name="Password">
-                              </div><br>
-                              <div >
-                                 <span>Confirm Password</span>
-                                 <input  type="Password" name="cPassword">
-                              </div><br>
-                     
-                              <div >
+                            <div>
                                  <button  class="book_btn" type="submit">Submit</button>
-                           
-                              </div><br>
-                              You are not a Visiter<a href="reg2.jsp"><font color=red>Sign Up as Employeee</font></a>
                             </div>
+                           
+                             
                         </form>
                         </div>
                      </div>
@@ -95,14 +82,13 @@
                </div>
             </div>
 </center>
-       
-     
-      <!-- end banner -->
-      <br><br>
-      <hr>
-<!-- End Reg Form -->
-<!-- Footer -->
-<%@include file="Footer.jsp" %>
-<!-- end Footer -->
-</body>
+
+<hr>
+
+
+<!-- /body -->
+      <!-- Footer -->
+    <%@include file="Footer.jsp" %>
+
+   </body>
 </html>

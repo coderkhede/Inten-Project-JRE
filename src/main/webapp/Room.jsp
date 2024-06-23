@@ -71,9 +71,9 @@
                         <figure><img src="images/room1.jpg" alt="#"/></figure>
                      </div>
                      <div class="bed_room">
-                        <h3><%if(x.getString(2)=="Single bad"){
-                        %>Single Bad Room	
-                        <% } %></h3>
+                        <h3>
+                        Single Bad Room	
+                        </h3>
                         <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
                      </div>
                   </div>
@@ -136,11 +136,7 @@
             </div>
          </div>
       </div> 
-    <% 	  
-      }
-      
-      
-      %>
+ 
       <!-- end our_room -->
 
       <!-- Footer -->

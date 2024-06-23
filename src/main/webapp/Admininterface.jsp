@@ -36,26 +36,28 @@
    <!-- header -->
      <%@include file="Header.jsp" %>
       <!-- end header -->
+      <hr>
 <center>
 <br><br>
 <font color=Black size=8>Welcome Admin</font><br>
 <img src="images\images.jpeg"><br>
 <h1>Admin Control From</h1><br>
-                       
+                       <form >
                           <div >
-                          <button class="book_btn" formaction="AddRoom">ADD Room</button>
-                          </div>
+                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
+                          </div><br><br>
                               <div >
-                          <button class="book_btn" formaction="JobRequest">Job Requests</button>
-                          </div>
+                          <button class="book_btn" formaction="JobRequest.jsp">Job Requests</button>
+                          </div><br><br>
                               <div >
-                          <button class="book_btn" formaction="AddRoom">Manage Rooms</button>
-                          </div>
+                          <button class="book_btn" formaction="AddRoom.jsp">Manage Rooms</button>
+                          </div><br><br>
                               <div>
-                          <button class="book_btn" formaction="Empmanagement">Employees Management</button>
+                          <button class="book_btn" formaction="Empmanagement.jsp">Employees Management</button>
                           </div>
+                       </form>
                         
-</center>
+</center><hr>
       <!-- Footer -->
     <%@include file="Footer.jsp" %>
 
