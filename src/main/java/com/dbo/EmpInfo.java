@@ -11,6 +11,13 @@ public class EmpInfo {
 	private String empjob;
 	private int empsalary;
 	private String emppass;
+	private String empstatus;
+	public String getEmpstatus() {
+		return empstatus;
+	}
+	public void setEmpstatus(String empstatus) {
+		this.empstatus = empstatus;
+	}
 	public int getEmpid() {
 		return empid;
 	}

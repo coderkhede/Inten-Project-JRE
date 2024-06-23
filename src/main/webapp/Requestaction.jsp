@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dbo.EmpInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Adminpage</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -35,29 +37,38 @@
    <body class="main-layout">
    <!-- header -->
      <%@include file="Header.jsp" %>
-      <!-- end header -->
-      <hr>
-<center>
-<br><br>
-<font color=Black size=8>Welcome Admin</font><br>
-<img src="images\images.jpeg"><br>
-<h1>Admin Control From</h1><br>
-                       <form >
-                          <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
-                          </div><br><br>
+     <hr>
+     <center>
+     <br><br>
+     <form action="AppDelServlet" method="get">
+			 
+		 <div >
+		 <h1>Employee Appoint/Delete Section</h1><br>
                               <div >
-                          <button class="book_btn" formaction="JobRequestServlet">Job Requests</button>
-                          </div><br><br>
+                                 <span>Employee Id</span>
+                                 <input placeholder="101" type="number" name="empid">
+                              </div><br>
                               <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">Manage Rooms</button>
-                          </div><br><br>
-                              <div>
-                          <button class="book_btn" formaction="Empmanagement.jsp">Employees Management</button>
-                          </div>
-                       </form>
-                        
-</center><hr>
+                                 <span>Name</span>                                 
+                                 <input  type="text" name="empname">                               
+                              </div><br>
+                              <div >
+                                 
+                                 <button class="book_btn"type="Submit" name="s1" value="Appoint">Appoint</button><br>
+                              </div><br>
+                              <div >
+                                 
+                                 <button class="book_btn"type="Submit" name="s1" value="Delete">Delete</button><br>
+                              </div><br>
+                               
+                             
+                            </div>
+               
+     
+
+     </form>
+     </center>
+     <hr>
       <!-- Footer -->
     <%@include file="Footer.jsp" %>
 

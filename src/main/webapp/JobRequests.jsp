@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dbo.EmpInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Adminpage</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -35,29 +37,58 @@
    <body class="main-layout">
    <!-- header -->
      <%@include file="Header.jsp" %>
-      <!-- end header -->
-      <hr>
-<center>
-<br><br>
-<font color=Black size=8>Welcome Admin</font><br>
-<img src="images\images.jpeg"><br>
-<h1>Admin Control From</h1><br>
-                       <form >
-                          <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="JobRequestServlet">Job Requests</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">Manage Rooms</button>
-                          </div><br><br>
-                              <div>
-                          <button class="book_btn" formaction="Empmanagement.jsp">Employees Management</button>
-                          </div>
-                       </form>
-                        
-</center><hr>
+     <hr>
+     <center>
+     <h3>Note:- Remember all the details of employee</h3>
+     <table  width=85%>
+      <tr>		
+            	<th><font color=black size=3>Employee ID</font></th>
+            	<th><font color=black size=3>Name</font></th>
+            	<th><font color=black size=3>Date of Birth</font></th>
+            	<th><font color=black size=3>Gender</font></th>
+            	<th><font color=black size=3>Requested Job</font></th>
+            	<th><font color=black size=3>Requested Salary</font></th>
+            	<th><font color=black size=3>Appointing.btn</font></th>
+            </tr>
+           
+            
+            <%
+            
+            ArrayList al =(ArrayList) request.getAttribute("allRequests");
+            //for(int i=0; i<al.size(); i++)
+            	int i=1;
+            	for(Object obj : al)
+            {
+            	EmpInfo s = (EmpInfo)obj;
+            	%>
+            	<tr>
+            	
+					
+            		
+            		
+            		<td><%=s.getEmpid()%></td>
+            		<td><%=s.getEmpname()%></td>
+            		<td><%=s.getEmpdob()%></td>
+            		<td><%=s.getEmpgender()%></td>
+            		<td><%=s.getEmpjob()%></td>
+            		<td><%=s.getEmpsalary()%></td>
+					<td><a href="Requestaction.jsp"><button class="book_btn">Click</button></a></td>					          		
+					          		
+            	
+            	</tr>
+            	<%
+            	i++;
+            }
+            %>
+      
+      </table>
+     
+     
+     
+
+
+     </center>
+<hr>
       <!-- Footer -->
     <%@include file="Footer.jsp" %>
 

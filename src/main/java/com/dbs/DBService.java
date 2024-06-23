@@ -135,7 +135,7 @@ public class DBService {
 	
 	public int EmpAdd(EmpInfo u) throws Exception {
 		int x=0;
-		PreparedStatement pr=con.prepareStatement("insert into empinfos(empid,empname,empdob,empgender,empphno,empemail,emppass,empjob,empsalary) values(?,?,?,?,?,?,?,?,?)");
+		PreparedStatement pr=con.prepareStatement("insert into empinfos(empid,empname,empdob,empgender,empphno,empemail,emppass,empjob,empsalary,empstatus) values(?,?,?,?,?,?,?,?,?,?)");
 		pr.setInt(1,u.getEmpid());
 		pr.setString(2,u.getEmpname());
 		pr.setString(3,u.getEmpdob());
@@ -145,6 +145,8 @@ public class DBService {
 		pr.setString(7,u.getEmppass());
 		pr.setString(8,u.getEmpjob());
 		pr.setInt(9,u.getEmpsalary());
+		pr.setString(10,u.getEmpstatus());
+		
 		x=pr.executeUpdate();
 		return x;
 	}
@@ -173,7 +175,47 @@ public class DBService {
 		}
 	return al;
 	}
-	
+	public ArrayList getAllRequests()
+	{
+		ArrayList<EmpInfo>al = new ArrayList<EmpInfo>();
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("select * from empinfos where empstatus='notAppointed'");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()==true)
+			{
+				EmpInfo s = new EmpInfo();
+				s.setEmpid(rs.getInt("empid"));
+				s.setEmpname(rs.getString("empname"));
+				s.setEmpdob(rs.getString("empdob"));
+				s.setEmpgender(rs.getString("empgender"));
+				s.setEmpjob(rs.getString("empjob"));
+				s.setEmpsalary(rs.getInt("empsalary"));
+				al.add(s);
+			}
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	public int appoint(int x)throws Exception {
+		PreparedStatement pr=con.prepareStatement("update empinfos set empstatus='Appointed' where empid=?");
+		pr.setInt(1, x);
+		int z=pr.executeUpdate();
+		
+		
+		return z;
+	}
+	public int delete(int x)throws Exception {
+		PreparedStatement pr=con.prepareStatement("delete from empinfos where empid=?");
+		pr.setInt(1, x);
+		int z=pr.executeUpdate();
+		
+		
+		return z;
+	}
 	
 	}
 

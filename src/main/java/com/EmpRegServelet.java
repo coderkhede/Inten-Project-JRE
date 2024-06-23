@@ -35,6 +35,7 @@ public class EmpRegServelet extends HttpServlet {
 		u.setEmppass(request.getParameter("emppass"));
 		u.setEmpjob(request.getParameter("empjob"));
 		u.setEmpsalary(Integer.parseInt(request.getParameter("empsalary")));
+		u.setEmpstatus("notAppointed");
 		DBService db = new DBService();
 		int x=0;
 		String target="";
@@ -50,7 +51,10 @@ public class EmpRegServelet extends HttpServlet {
 		{
 			System.out.println("Valid User");
 			target="/Succsesfull.jsp";
+		
+			
 		}else {
+			
 			
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(target);
