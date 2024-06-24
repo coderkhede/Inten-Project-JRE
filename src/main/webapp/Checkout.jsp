@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Adminpage</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -36,29 +36,47 @@
    <!-- header -->
      <%@include file="Header.jsp" %>
       <!-- end header -->
-      <hr>
-<center>
-<br><br>
-<font color=Black size=8>Welcome Admin</font><br>
-<img src="images\images.jpeg"><br>
-<h1>Admin Control From</h1><br>
-                       <form >
-                          <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
-                          </div><br><br>
+            <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                     <h2>Manage Room</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- our_room -->
+      <hr><br>
+      <br>
+      <center>
+      <form action="CheckoutServlet" method=post>
+       <div >
+		 <h1>Room Checkout/Delete page</h1><br>
                               <div >
-                          <button class="book_btn" formaction="JobRequestServlet">Job Requests</button>
-                          </div><br><br>
+                                 <span>Roomno</span>
+                                 <input placeholder="101" type="number" name="roomno">
+                              </div><br>
                               <div >
-                          <button class="book_btn" formaction="ManageRoomServlet" method=post>Manage Rooms</button>
-                          </div><br><br>
-                              <div>
-                          <button class="book_btn" formaction="Empmanagement.jsp">Employees Management</button>
-                          </div>
-                       </form>
-                        
-</center><hr>
-      <!-- Footer -->
+                                 <span>Building No</span>                                 
+                                 <input placeholder="1" type="number" name="buildingno">                               
+                              </div><br>
+                              <div >
+                                 
+                                 <button class="book_btn"type="Submit" name="a1" value="Checkout">Check-out</button><br>
+                              </div><br>
+                              <div >
+                                 
+                                 <button class="book_btn"type="Submit" name="a1" value="Delete">Delete</button><br>
+                              </div><br>
+                               
+                             
+                            </div>
+      
+      </form>
+`	  <!-- Start footer -->
+      </center>
     <%@include file="Footer.jsp" %>
 
    </body>

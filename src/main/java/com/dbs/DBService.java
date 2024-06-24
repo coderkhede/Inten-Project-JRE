@@ -216,7 +216,51 @@ public class DBService {
 		
 		return z;
 	}
-	
+	public ArrayList ManageAllRoom()
+	{
+		ArrayList<Roominfo>al = new ArrayList<Roominfo>();
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("select * from Roominfo");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()==true)
+			{
+				Roominfo s = new Roominfo();
+				s.setRoomno(rs.getInt("roomno"));
+				s.setRoomtype(rs.getString("roomtype"));
+				s.setRoomcap(rs.getInt("roomcapacity"));
+				s.setRoomcost(rs.getInt("roomCPP"));
+				s.setBookfrom(rs.getString("bookfrom"));
+				s.setBookto(rs.getString("bookto"));
+				s.setBookby(rs.getString("bookby"));
+				s.setNoofCostumer(rs.getInt("NoofCostumer"));
+				s.setBuildingno(rs.getInt("BuldingNo"));
+				s.setRoomimagename(rs.getString("imagename"));
+				
+				al.add(s);
+			}
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	public int Insertdetails(Roominfo r)throws Exception {
+		int x=0;
+		PreparedStatement pr=con.prepareStatement("insert into roominfo(bookfrom,bookto,bookby,NoofCostumer) values(?,?,?,?)");
+		pr.setString(1,r.getBookfrom());
+		pr.setString(2,r.getBookto());
+		pr.setString(3,r.getBookby());
+		pr.setInt(4, r.getNoofCostumer());
+		x=pr.executeUpdate();
+		return x;
+	}
+	public String Giveprice(Roominfo r)throws Exception{
+		String x=null;
+		
+		return x;
+	}
 	}
 
 

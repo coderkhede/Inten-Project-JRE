@@ -10,6 +10,10 @@ public class Roominfo {
 	private int roomcost;
 	private int buildingno;
 	private String roomimagename;
+	private String bookfrom;
+	private String bookto;
+	private String bookby;
+	private int noofCostumer;
 	public int getRoomno() {
 		return roomno;
 	}
@@ -45,6 +49,30 @@ public class Roominfo {
 	}
 	public void setRoomimagename(String roomimagename) {
 		this.roomimagename = roomimagename;
+	}
+	public String getBookfrom() {
+		return bookfrom;
+	}
+	public void setBookfrom(String bookfrom) {
+		this.bookfrom = bookfrom;
+	}
+	public String getBookto() {
+		return bookto;
+	}
+	public void setBookto(String bookto) {
+		this.bookto = bookto;
+	}
+	public String getBookby() {
+		return bookby;
+	}
+	public void setBookby(String bookby) {
+		this.bookby = bookby;
+	}
+	public int getNoofCostumer() {
+		return noofCostumer;
+	}
+	public void setNoofCostumer(int noofCostumer) {
+		this.noofCostumer = noofCostumer;
 	}
 
 }

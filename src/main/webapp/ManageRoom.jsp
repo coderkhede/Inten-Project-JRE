@@ -1,7 +1,5 @@
 <%@page import="com.dbo.Roominfo"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.dbs.DBService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,7 +43,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="title">
-                     <h2>Available rooms</h2>
+                     <h2>All rooms</h2>
                   </div>
                </div>
             </div>
@@ -55,7 +53,7 @@
       <hr><br>
       <br>
       <center>
-      <h3>Note:- Remember the details of Selected room to fill the Booking Form</h3><br>
+      <h3>Note:- Remember the details of Selected room to Checkout the correct room Form</h3><br>
       <table  width=85%>
       <tr>		
             	<th><font color=black size=3>Room.No</font></th>
@@ -63,14 +61,18 @@
             	<th><font color=black size=3>Room Capacity</font></th>
             	<th><font color=black size=3>Room Cost per Night</font></th>
             	<th><font color=black size=3>Building No</font></th>
+            	<th><font color=black size=3>Booked From</font></th>
+            	<th><font color=black size=3>Booked To</font></th>
+            	<th><font color=black size=3>Booked By</font></th>
+            	<th><font color=black size=3>No.ofCS</font></th>
             	<th><font color=black size=3>Image</font></th>
-            	<th><font color=black size=3>Booking.btn</font></th>
+            	<th><font color=black size=3>CheckOut.btn</font></th>
             </tr>
            
             
             <%
             
-            ArrayList al =(ArrayList) request.getAttribute("allRooms");
+            ArrayList al =(ArrayList) request.getAttribute("getallRooms");
             //for(int i=0; i<al.size(); i++)
             	int i=1;
             	for(Object obj : al)
@@ -79,7 +81,7 @@
             	%>
             	<tr>
             	
-					<form action="Booking.jsp">
+					<form action="Checkout.jsp" >
             		
             		<td><%=s.getRoomno()%></td>
             		
@@ -87,8 +89,12 @@
             		<td><%=s.getRoomcap()%></td>
             		<td><%=s.getRoomcost()%></td>
             		<td><%=s.getBuildingno()%></td>
-            		<td><img src="images\<%=s.getRoomimagename()%>" width=120px hight=100px></td>
-					<td><button class="book_btn">Book</button></td>					          		
+            		<td><%=s.getBookfrom()%></td>
+            		<td><%=s.getBookto()%></td>
+            		<td><%=s.getBookby()%></td>
+            		<td><%=s.getNoofCostumer()%></td>
+            		<td><%=s.getRoomimagename()%></td>
+					<td><button class="book_btn" name="b1" value="<%=s.getRoomno()%>">Click</button></td>					          		
 					</form>            		
             	
             	</tr>
@@ -100,7 +106,6 @@
       </table>
       </center>
 <hr>
-
       <!-- Footer -->
     <%@include file="Footer.jsp" %>
 
