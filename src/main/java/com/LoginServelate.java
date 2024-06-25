@@ -1,6 +1,7 @@
 package com;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dbo.EmpInfo;
 import com.dbo.LoginInfo;
 import com.dbo.User;
 import com.dbs.DBService;
@@ -53,8 +55,12 @@ public class LoginServelate extends HttpServlet {
 			}
 			else if(l.getRoll().equals("employee")==true)
 			{
-				
+				EmpInfo d=new EmpInfo();
+				d.setEmpid(Integer.parseInt(request.getParameter("Username")));
+				ArrayList al = db.getDetailsEmployee(d);
+				request.setAttribute("DisplayEmployee", al);
 				target="/Employeeinface.jsp";
+				
 			}else {
 				
 				
@@ -66,6 +72,8 @@ public class LoginServelate extends HttpServlet {
 			request.setAttribute("sms", "Invalid Username/Password");
 			target="/Login.jsp";
 		}
+		
+		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(target);
 		rd.forward(request, response);
 	}

@@ -1,5 +1,5 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.dbo.EmpInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,14 +37,13 @@
    <body class="main-layout">
    <!-- header -->
      <%@include file="Header.jsp" %>
-     
       <!-- end header -->
-      <div class="back_re">
+ 	     <div class="back_re">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="title">
-                     <h2>Employee Page</h2>
+                     <h2>Manage Employee</h2>
                   </div>
                </div>
             </div>
@@ -53,44 +52,68 @@
       <!-- our_room -->
       <hr><br>
       <br>
-    
-   
- 
-    
-<center>
-<br><br>
-<img src="images\images.jpeg">
-<table>
-<tr>
-<th>
-Name
-</th></tr>
-<tr>
-<%
-	ArrayList al =(ArrayList) request.getAttribute("DisplayEmployee");
-//for(int i=0; i<al.size(); i++)
-	int i=0;
-	for(Object obj : al)
-{
-	EmpInfo s = (EmpInfo)obj;
-
-%>
-
-					<td><%=s.getEmpid()%></td>
+ 		 <center>
+     <h3>Note:- Remember all the details of employee</h3>
+     <table  width=85%>
+      <tr>		
+            	<th><font color=black size=3>Employee ID</font></th>
+            	<th><font color=black size=3>Name</font></th>
+            	<th><font color=black size=3>Date of Birth</font></th>
+            	<th><font color=black size=3>Gender</font></th>
+            	<th><font color=black size=3>Job</font></th>
+            	<th><font color=black size=3>Salary</font></th>
+            	<th><font color=black size=3>Email</font></th>
+            	<th><font color=black size=3>phone no</font></th>
+            	<th><font color=black size=3>status</font></th>
+            	<th><font color=black size=3>Duty at</font></th>
+            	<th><font color=black size=3>Btn</font></th>
+            </tr>
+           
+            
+            <%
+            
+            ArrayList al =(ArrayList) request.getAttribute("allemployee");
+            //for(int i=0; i<al.size(); i++)
+            	int i=1;
+            	for(Object obj : al)
+            {
+            	EmpInfo s = (EmpInfo)obj;
+            	%>
+            	<tr>
+            	
+					
+            		
+            		
+            		<td><%=s.getEmpid()%></td>
             		<td><%=s.getEmpname()%></td>
             		<td><%=s.getEmpdob()%></td>
             		<td><%=s.getEmpgender()%></td>
             		<td><%=s.getEmpjob()%></td>
             		<td><%=s.getEmpsalary()%></td>
-            		</tr>
+            		<td><%=s.getEmpemail()%></td>
+            		<td><%=s.getEmpphno()%></td>
+            		<td><%=s.getEmpstatus()%></td>
+            		<td><%=s.getDutyat()%></td>
+					<td><a href="DelOn.jsp"><button class="book_btn">Click</button></a></td>					          		
+					          		
+            	
+            	</tr>
             	<%
             	i++;
             }
             %>
-</table><br>
+      
+      </table>
+     
+     
+     
 
-</center>
-      <!-- Footer -->
+
+     </center>
+<hr>
+ 
+ 
+<!-- Footer -->
     <%@include file="Footer.jsp" %>
 
    </body>

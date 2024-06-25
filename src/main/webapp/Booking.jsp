@@ -78,17 +78,20 @@
                               </div><br>
                               <div >
                                  <span>No of Visiter</span>
-                                 <input  type="number" name="noofcostumer">
+                                 <input  type="text" name="noofcostumer">
                               </div><br>
                               <div >
                                  <span>Email</span>                                 
-                                 <input  type="Email" name="Email">                                 
+                                 <input  type="Email" name="email">                                 
                               </div><br>
                               <div >
                                  <span>Phone Number</span>
-                                 <input  type="Number" name="phnumber">
+                                 <input  type="Number" name="phno">
                               </div><br>
-                     
+                     			  <div >
+                                 <span>Booking Id</span>
+                                 <input  type="Number" name="bookingid">
+                              </div><br>
                               <div >
                                  <button  class="book_btn" type="submit">Submit</button>
                            

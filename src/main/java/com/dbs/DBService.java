@@ -14,6 +14,7 @@ import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import org.apache.catalina.connector.Response;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
+import com.dbo.BookingInfo;
 import com.dbo.EmpInfo;
 import com.dbo.LoginInfo;
 import com.dbo.Roominfo;
@@ -77,7 +78,7 @@ public class DBService {
 		}
 		else if(u.getRoll().equals("employee")==true)
 		{
-			PreparedStatement ps = con.prepareStatement("select * from empinfos where employeeID = ? and password = ?");
+			PreparedStatement ps = con.prepareStatement("select * from empinfos where empid = ? and emppass = ?");
 			ps.setString(1, u.getUsername());
 			ps.setString(2, u.getPassword());
 			ResultSet rs = ps.executeQuery();
@@ -111,18 +112,18 @@ public class DBService {
 		
 	}
 
-	public int addroom(Roominfo r,String y)
+	public int addroom(Roominfo r)
 	{
 		int xx=0;
 		try 
 		{
-			PreparedStatement ps = con.prepareStatement("insert into Roominfo(roomno,roomtype,roomcapacity,roomCPP,BuldingNo,imagename) values(?,?,?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("insert into Roominfo(roomno,roomtype,roomcapacity,roomCPP,BuldingNo,imagename,cheking) values(?,?,?,?,?,?,'y')");
 			ps.setInt(1,r.getRoomno() );
 			ps.setString(2,r.getRoomtype() );
 			ps.setInt(3,r.getRoomcap() );
 			ps.setInt(4,r.getRoomcost() );
 			ps.setInt(5,r.getBuildingno() );
-			ps.setString(1,y );
+			ps.setString(6,r.getRoomimagename() );
 			xx = ps.executeUpdate();
 			
 		}
@@ -248,20 +249,161 @@ public class DBService {
 	}
 	public int Insertdetails(Roominfo r)throws Exception {
 		int x=0;
-		PreparedStatement pr=con.prepareStatement("insert into roominfo(bookfrom,bookto,bookby,NoofCostumer) values(?,?,?,?)");
+		
+		PreparedStatement pr=con.prepareStatement("update roominfo set bookfrom=?,bookto=?,bookby=?,NoofCostumer=?,cheking='n' where roomno=?; ");
 		pr.setString(1,r.getBookfrom());
 		pr.setString(2,r.getBookto());
 		pr.setString(3,r.getBookby());
 		pr.setInt(4, r.getNoofCostumer());
+		pr.setInt(5,r.getRoomno());
 		x=pr.executeUpdate();
 		return x;
 	}
-	public String Giveprice(Roominfo r)throws Exception{
-		String x=null;
+	public int Giveprice(BookingInfo b)throws Exception{
+	int x=0;
+		PreparedStatement pr=con.prepareStatement("select roomCPP from roominfo where roomno=?");
+		pr.setInt(1, b.getRoomno());
+		ResultSet rs=pr.executeQuery();
 		
+		b.setPrice(rs.getInt("roomCPP"));
 		return x;
 	}
+	public int RecordBooking(BookingInfo b)throws Exception{
+		int x=0;
+		PreparedStatement pr=con.prepareStatement("insert into Booking values(?,?,?,?,?,?,?,?,?,?)");
+		pr.setString(1, b.getUsername());
+		pr.setInt(2,b.getRoomno());
+		pr.setInt(3, b.getBuildingno());
+		pr.setString(4,b.getBookfrom());
+		pr.setString(5,b.getBookto());
+		pr.setInt(6, b.getNoofcostumer());
+		pr.setString(7,b.getEmail());
+		pr.setString(8,b.getPhno());
+		pr.setInt(9, b.getBookingid());
+		pr.setInt(10, b.getPrice());
+		x=pr.executeUpdate();
+		return x;
 	}
+	public ArrayList getbookingdetail()
+	{
+		ArrayList<BookingInfo>al = new ArrayList<BookingInfo>();
+		try 
+		{	BookingInfo b=new BookingInfo();
+			PreparedStatement ps = con.prepareStatement("select * from Booking where Bookingid=?");
+			ps.setInt(1,b.getBookingid());
+			ResultSet rs = ps.executeQuery();
+			b.setUsername(rs.getString("User"));
+			b.setRoomno(rs.getInt("roomno"));
+			b.setBuildingno(rs.getInt("buildingNo"));
+			b.setBookfrom(rs.getString("bookfrom"));
+			b.setBookto(rs.getString("bookto"));
+			b.setNoofcostumer(rs.getInt("noofcostumer"));
+			b.setEmail(rs.getString("Email"));
+			b.setPhno(rs.getString("phno"));
+			b.setBookingid(rs.getInt("Bookingid"));
+			b.setPrice(rs.getInt("Price"));	
+				
+				al.add(b);
+			
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	public ArrayList getAllemployee()
+	{
+		ArrayList<EmpInfo>al = new ArrayList<EmpInfo>();
+		try 
+		{
+			PreparedStatement ps = con.prepareStatement("select * from empinfos");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()==true)
+			{
+				EmpInfo s = new EmpInfo();
+				s.setEmpid(rs.getInt("empid"));
+				s.setEmpname(rs.getString("empname"));
+				s.setEmpdob(rs.getString("empdob"));
+				s.setEmpgender(rs.getString("empgender"));
+				s.setEmpphno(rs.getString("empphno"));
+				s.setEmpemail(rs.getString("empemail"));
+				s.setEmpstatus(rs.getString("empstatus"));
+				s.setEmpjob(rs.getString("empjob"));
+				s.setEmpsalary(rs.getInt("empsalary"));
+				s.setDutyat(rs.getString("Dutyat"));
+				al.add(s);
+			}
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	public ArrayList getDetailsEmployee(EmpInfo s)
+	{
+		ArrayList<EmpInfo>al = new ArrayList<EmpInfo>();
+		try 
+		{
+			
+			PreparedStatement ps = con.prepareStatement("select * from empinfos where empid=?");
+			ps.setInt(1,s.getEmpid());
+			ResultSet rs = ps.executeQuery();
+			
+				s.setEmpid(rs.getInt("empid"));
+				s.setEmpname(rs.getString("empname"));
+				s.setEmpdob(rs.getString("empdob"));
+				s.setEmpgender(rs.getString("empgender"));
+				s.setEmpphno(rs.getString("empphno"));
+				s.setEmpemail(rs.getString("empemail"));
+				s.setEmpstatus(rs.getString("empstatus"));
+				s.setEmpjob(rs.getString("empjob"));
+				s.setEmpsalary(rs.getInt("empsalary"));
+				s.setDutyat(rs.getString("Dutyat"));
+				al.add(s);
+			
+		}
+		catch (Exception e) 
+		{
+			
+		}
+	return al;
+	}
+	public int Checkout(int a) throws Exception{
+		int x=0;
+		PreparedStatement ps = con.prepareStatement("update roominfo set bookfrom='NULL',bookto='NULL',bookby='NULL',NoofCostumer=0,cheking='y' where roomno=?");
+		ps.setInt(1,a);
+		x=ps.executeUpdate();
+		return x;
+	}
+	public int DeleteRoom(int a) throws Exception{
+		int x=0;
+		PreparedStatement ps = con.prepareStatement("delete from roominfo where roomno=?");
+		ps.setInt(1,a);
+		x=ps.executeUpdate();
+		return x;
+	}
+	public int Dutyat(EmpInfo e)throws Exception{
+		int x=0;
+		PreparedStatement ps = con.prepareStatement("update empinfos set Dutyat=? where empid=?");
+		ps.setString(1,e.getDutyat());
+		ps.setInt(2, e.getEmpid());
+		x=ps.executeUpdate();
+		return x;
+		
+	}
+	public int empdelete(EmpInfo e)throws Exception{
+		int x=0;
+		PreparedStatement ps = con.prepareStatement("delete from empinfos where empid=?");
+		
+		ps.setInt(1, e.getEmpid());
+		x=ps.executeUpdate();
+		return x;
+		
+	}
+	}
+
 
 
 

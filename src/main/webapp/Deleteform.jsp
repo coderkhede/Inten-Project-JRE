@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Adminpage</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -36,30 +36,33 @@
    <!-- header -->
      <%@include file="Header.jsp" %>
       <!-- end header -->
-      <hr>
-<center>
-<br><br>
-<font color=Black size=8>Welcome Admin</font><br>
-<img src="images\images.jpeg"><br>
-<h1>Admin Control From</h1><br>
-                       <form >
-                          <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="JobRequestServlet">Job Requests</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="ManageRoomServlet" method=post>Manage Rooms</button>
-                          </div><br><br>
-                              <div>
-                          <button class="book_btn" formaction="EmpmanagementServlet">Employees Management</button>
-                          </div>
-                       </form>
-                        
-</center><hr>
-      <!-- Footer -->
-    <%@include file="Footer.jsp" %>
+      <!-- end header -->
+      <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                     <h2>Delete Employee Form</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- our_room -->
+      <hr><br>
+      <br>
+      <center>
+      <form action=EmpDelServlet method=post>
+      		<div>
+      		Employee id <input type=text name="empid">
+      		</div><br>
+      		<div>
+      		<button class="book_btn">Delete</button>
+      		</div>
+      </form>
+      </center>
+
+  <%@include file="Footer.jsp" %>
 
    </body>
 </html>

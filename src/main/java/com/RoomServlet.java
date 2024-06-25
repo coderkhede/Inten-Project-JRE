@@ -4,7 +4,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import com.dbo.Roominfo;
 import com.dbs.DBService;
 
 @WebServlet("/RoomServlet")
+@MultipartConfig
 public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,17 +37,17 @@ public class RoomServlet extends HttpServlet {
 		r.setBuildingno(Integer.parseInt(request.getParameter("bulidingno")));
 		 DBService db = new DBService();
 	        int x =0;
-	        Part filePart = request.getPart("images");
+	        Part filePart = request.getPart("roomimage");
 	     
 	        // Check if the request contains a file part
 	        if (filePart != null)
 	         {
 	            String imageFileName = filePart.getSubmittedFileName(); // get selected image file name
 	            System.out.println("Selected Images File Name: " + imageFileName);
-	           
-	            x = db.addroom(r,imageFileName);
+	           r.setRoomimagename(imageFileName);
+	            x = db.addroom(r);
 	            // Specify the upload path where the image will be stored
-	            String uploadPath = "/java/Project 1/Pr1/src/main/webapp/images/" + imageFileName;
+	            String uploadPath = "d:/java/Project 1/Pr1/src/main/webapp/images/" + imageFileName;
 	            System.out.println("Upload Path: " + uploadPath);
 
 	            try (FileOutputStream fos = new FileOutputStream(uploadPath);
@@ -72,6 +75,9 @@ public class RoomServlet extends HttpServlet {
 	        {
 	        	System.out.println("Image Uploaded");
 	        }
-	}
+	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Admininterface.jsp");
+	    	rd.forward(request, response);
 
+	}
+	
 }

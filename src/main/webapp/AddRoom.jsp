@@ -43,28 +43,28 @@
                <div >
                   <div >
                      <div >
-                        <form  action="RoomServlet" method="post">
+                        <form  action="RoomServlet" method="post" enctype="multipart/form-data">
                         <h1>Add Rooms</h1><br>
                          
                               <div >
                                  <span>Room No</span>
-                                 <input placeholder="101" type="Number" name="roomno">
+                                 <input placeholder="101" type="text" name="roomno">
                               </div><br>
                               <div >
                                  <span>Room Type</span>                                 
-                                 <input  placeholder="Single Room"type="text" name="roomtype">                               
+                                 <input  placeholder="Single Room" type="text" name="roomtype">                               
                               </div><br>
                               <div >
                                  <span>Room Capacity</span>
-                                 <input  type="number" name="roomcap"><br>
+                                 <input  type="text" name="roomcap"><br>
                               </div><br> 
                               <div >
                                  <span>Room Cost Per Person</span>
-                                 <input placeholder="10000" type="number" name="roomcost">
+                                 <input placeholder="10000" type="text" name="roomcost">
                               </div><br>
                               <div >
                                  <span>Room's Building No</span>                                 
-                                 <input  type="number" name="bulidingno">                                 
+                                 <input  type="text" name="bulidingno">                                 
                               </div><br>
                               <div >
                                  <span>Room image</span>

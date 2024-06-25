@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dbo.BookingInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Adminpage</title>
+      <title>keto</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -36,28 +38,59 @@
    <!-- header -->
      <%@include file="Header.jsp" %>
       <!-- end header -->
-      <hr>
-<center>
-<br><br>
-<font color=Black size=8>Welcome Admin</font><br>
-<img src="images\images.jpeg"><br>
-<h1>Admin Control From</h1><br>
-                       <form >
-                          <div >
-                          <button class="book_btn" formaction="AddRoom.jsp">ADD Room</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="JobRequestServlet">Job Requests</button>
-                          </div><br><br>
-                              <div >
-                          <button class="book_btn" formaction="ManageRoomServlet" method=post>Manage Rooms</button>
-                          </div><br><br>
-                              <div>
-                          <button class="book_btn" formaction="EmpmanagementServlet">Employees Management</button>
-                          </div>
-                       </form>
-                        
-</center><hr>
+ <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                     <h2>Booking Details</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- our_room -->
+      <hr><br>
+      <br>
+      <center>
+      <h3>Note:- Scan QR to pay</h3><br>
+      <table  width=85%>
+      <tr>		
+            	<font color=black size=3>Details</font>
+            	
+            </tr>
+           
+            
+            <%
+            
+            ArrayList al =(ArrayList) request.getAttribute("bookingdetails");
+            //for(int i=0; i<al.size(); i++)
+            	int i=1;
+            	for(Object obj : al)
+            {
+            	BookingInfo s = (BookingInfo)obj;
+            	%>
+            	
+            		<tr><%=s.getUsername()%></tr>
+					<tr><%=s.getRoomno()%></tr>
+					<tr><%=s.getBuildingno()%></tr>
+					<tr><%=s.getNoofcostumer()%></tr>
+					<tr><%=s.getBookfrom()%></tr>
+					<tr><%=s.getBookto()%></tr>
+					<tr><%=s.getBookingid()%></tr>
+					<tr><%=s.getEmail()%></tr>
+					<tr><%=s.getPhno()%></tr>
+					<tr><%=s.getPrice()%></tr>           		
+            	
+            	<%
+            	i++;
+            }
+            %>
+      
+      </table><br>
+      <img src="images\Qr.jpg">
+      </center>
+<hr>
       <!-- Footer -->
     <%@include file="Footer.jsp" %>
 

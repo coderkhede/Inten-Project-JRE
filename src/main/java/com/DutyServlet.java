@@ -9,46 +9,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dbo.Roominfo;
+import com.dbo.EmpInfo;
 import com.dbs.DBService;
 
-@WebServlet("/CheckoutServlet")
-public class CheckoutServlet extends HttpServlet {
+/**
+ * Servlet implementation class DutyServlet
+ */
+@WebServlet("/DutyServlet")
+public class DutyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   
-    public CheckoutServlet() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DutyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Roominfo r =new Roominfo();
-		String op=request.getParameter("a1");
-		int a=Integer.parseInt(request.getParameter("roomno"));
-		int b=Integer.parseInt(request.getParameter("buildingno"));
-		int x=0;
-		DBService db=new DBService();
-		if(op.equals("Checkout")==true) {
-			try {
-				db.Checkout(a);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		else {
-			try {
-				db.DeleteRoom(a);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		EmpInfo d=new EmpInfo();
+		d.setEmpid(Integer.parseInt(request.getParameter("empid")));
+		d.setDutyat(request.getParameter("dutyat"));
+		DBService db= new DBService();
+		try {
+			db.Dutyat(d);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/Admininterface.jsp");
 		rd.forward(request, response);
-		
 	}
 
 }
