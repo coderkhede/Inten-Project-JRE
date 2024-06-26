@@ -1,3 +1,5 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="com.dbs.DBService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dbo.EmpInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -60,34 +62,24 @@
 <center>
 <br><br>
 <img src="images\images.jpeg">
-<table>
-<tr>
-<th>
-Name
-</th></tr>
-<tr>
-<%
-	ArrayList al =(ArrayList) request.getAttribute("DisplayEmployee");
-//for(int i=0; i<al.size(); i++)
-	int i=0;
-	for(Object obj : al)
-{
-	EmpInfo s = (EmpInfo)obj;
+<br>
+<% 
+ EmpInfo s =(EmpInfo) request.getAttribute("Emplyoeedetails");
+
+if(s!=null){
+		%>
+		
+		<h3>Employee id=<%=s.getEmpid()%></h3><br>
+		
+	
+		
+		</form>
+		
+		<% 
+	}
 
 %>
-
-					<td><%=s.getEmpid()%></td>
-            		<td><%=s.getEmpname()%></td>
-            		<td><%=s.getEmpdob()%></td>
-            		<td><%=s.getEmpgender()%></td>
-            		<td><%=s.getEmpjob()%></td>
-            		<td><%=s.getEmpsalary()%></td>
-            		</tr>
-            	<%
-            	i++;
-            }
-            %>
-</table><br>
+<br>
 
 </center>
       <!-- Footer -->

@@ -57,8 +57,7 @@ public class LoginServelate extends HttpServlet {
 			{
 				EmpInfo d=new EmpInfo();
 				d.setEmpid(Integer.parseInt(request.getParameter("Username")));
-				ArrayList al = db.getDetailsEmployee(d);
-				request.setAttribute("DisplayEmployee", al);
+				request.setAttribute("Emplyoeedetails", d);
 				target="/Employeeinface.jsp";
 				
 			}else {

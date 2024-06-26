@@ -64,15 +64,18 @@ public class BookingServlet extends HttpServlet {
 		b.setBookingid(Integer.parseInt(request.getParameter("bookingid")));
 		int Elements=(Integer.parseInt(request.getParameter("noofcostumer")));
 		try {
-			 db.Giveprice(b);
+			int y =  db.Giveprice(b);
+			y=y*Elements;
+			b.setPrice(y);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.print(e);
 		}
-		Cost=b.getPrice();
+		/*Cost=b.getPrice();
 		Cost=Cost*Elements;
 		b.setPrice(Cost);
+		 */
 		try {
 			int y=db.RecordBooking(b);
 		} catch (Exception e) {
@@ -80,9 +83,8 @@ public class BookingServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
-		ArrayList al = db.getbookingdetail();
-		request.setAttribute("bookingdetails", al);
+		//ArrayList al = db.getbookingdetail();
+		request.setAttribute("bookingdetails", b);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/BookingDetail.jsp");
 		rd.forward(request, response);
 		

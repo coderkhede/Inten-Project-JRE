@@ -54,37 +54,44 @@
       <br>
       <center>
       <h3>Note:- Scan QR to pay</h3><br>
-      <table  width=85%>
-      <tr>		
-            	<font color=black size=3>Details</font>
-            	
-            </tr>
+      <table width=85%>
+      <caption>Details</caption>
+      <tr>	
+          <th>Username</th>
+          <th>Roono</th>
+          <th>BuildingNo</th>
+          <th>BoofCostumer</th>
+          <th>Bookfrom</th>
+          <th>Bookto</th>
+          <th>Booking id</th>
+          <th>Email</th>
+          <th>Ph.no</th>
+          <th>Price</th>           	
+     </tr>
            
             
             <%
             
-            ArrayList al =(ArrayList) request.getAttribute("bookingdetails");
+            BookingInfo s =(BookingInfo) request.getAttribute("bookingdetails");
             //for(int i=0; i<al.size(); i++)
-            	int i=1;
-            	for(Object obj : al)
-            {
-            	BookingInfo s = (BookingInfo)obj;
-            	%>
-            	
-            		<tr><%=s.getUsername()%></tr>
-					<tr><%=s.getRoomno()%></tr>
-					<tr><%=s.getBuildingno()%></tr>
-					<tr><%=s.getNoofcostumer()%></tr>
-					<tr><%=s.getBookfrom()%></tr>
-					<tr><%=s.getBookto()%></tr>
-					<tr><%=s.getBookingid()%></tr>
-					<tr><%=s.getEmail()%></tr>
-					<tr><%=s.getPhno()%></tr>
-					<tr><%=s.getPrice()%></tr>           		
-            	
-            	<%
-            	i++;
+            	//int i=1;
+            if(s!=null)
+            { 
+            %><tr>
+            		<td><%=s.getUsername()%></td>
+					<td><%=s.getRoomno()%></td>
+					<td><%=s.getBuildingno()%></td>
+					<td><%=s.getNoofcostumer()%></td>
+					<td><%=s.getBookfrom()%></td>
+					<td><%=s.getBookto()%></td>
+					<td><%=s.getBookingid()%></td>
+					<td><%=s.getEmail()%></td>
+					<td><%=s.getPhno()%></td>
+					<td><%=s.getPrice()%></td>           		
+            	</tr>
+            <%
             }
+            
             %>
       
       </table><br>

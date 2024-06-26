@@ -264,8 +264,10 @@ public class DBService {
 		PreparedStatement pr=con.prepareStatement("select roomCPP from roominfo where roomno=?");
 		pr.setInt(1, b.getRoomno());
 		ResultSet rs=pr.executeQuery();
-		
-		b.setPrice(rs.getInt("roomCPP"));
+		if(rs.next()==true)
+		{
+		x = rs.getInt("roomCPP");
+		}
 		return x;
 	}
 	public int RecordBooking(BookingInfo b)throws Exception{
